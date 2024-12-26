@@ -1,20 +1,17 @@
 #include <gtk/gtk.h>
+#include "./widgets/mb_button.h"
 
-static void
-activate (GtkApplication* app,
-          gpointer        user_data)
+static void activate (GtkApplication* app, gpointer user_data)
 {
-  GtkWidget *window;
-
-  window = gtk_application_window_new (app);
+  GtkWidget *window = gtk_application_window_new (app);
+	GtkWidget *button = mb_button_new();
   gtk_window_set_title (GTK_WINDOW (window), "Window");
-  gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+  gtk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+	gtk_window_set_child(GTK_WINDOW(window), button);
   gtk_window_present (GTK_WINDOW (window));
 }
 
-int
-main (int    argc,
-      char **argv)
+int main(int argc, char **argv)
 {
   GtkApplication *app;
   int status;
